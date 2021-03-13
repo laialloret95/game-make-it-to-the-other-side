@@ -46,7 +46,6 @@ class Game {
     update() {
         this.clean();
         this.player.draw();
-        console.log(this.player.x);
         window.requestAnimationFrame(this.update.bind(this));
     }
     start() {
