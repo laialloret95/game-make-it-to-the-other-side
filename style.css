@@ -51,3 +51,12 @@ button {
     left:50%;
     transform: translate(-50%,-50%);
 }
+
+#gameover {
+    width: 900px;
+    height: 900px;
+    background-color: orange;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
