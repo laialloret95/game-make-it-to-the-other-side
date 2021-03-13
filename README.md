@@ -1,4 +1,4 @@
-# Ironhack. Can you make it to the other side? yes!
+# Ironhack. Can you make it to the other side?
 
 
 The purpose of the game is to cross all the terrains and get to the other side of the screen. Every time the player reaches the other side she scores and gets to the next level.
