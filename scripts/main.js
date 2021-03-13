@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const gamePage = document.getElementById('game');
     const gameOverPage = document.getElementById('gameover');
 
-    // Canvas
+    // Canvas Layers
     const canvas = document.getElementById('canvas1');
     const ctx1 = canvas.getContext('2d');
     canvas.width = 900;
@@ -43,4 +43,20 @@ document.addEventListener('DOMContentLoaded', () => {
         gamePage.classList.remove('hide');
         gamePage.classList.add('show');
     })
+
+    const mainGame = new Game(
+        {
+            ctx1: ctx1,
+            ctx2: ctx2,
+            ctx3: ctx2,
+            canvasWidth: canvas.width,
+            canvasHeight: canvas.height,
+            jabaliImg: jabaliImg,
+            monster: monster,
+            player: player = new Player(ctx2, cell,canvas.width, canvas.height),
+            cell: cell,
+        },
+        printGameOver
+    );
+    mainGame.start();
 })
