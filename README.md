@@ -44,23 +44,19 @@ HTML5, Canvas, and Vanilla Javascript
 * Change the background each time the player advances levels
 
 ## Data structure
-__setup.js__
+__main.js__
 
 ````
+DOM content Loaded;
 canvas variables;
-global variables;
-arrays;
-canvas images;
+images variables;
+function printGameOver();
+startButton.addEventListener('click');
 ````
-__utilities.js__
+__game.js__
 
 ````
-keyboard event listeners;
-function animateLoop();
-function scored();
-function showScoreBoard();
-function collision();
-function resetGame();
+class Game {};
 ````
 __player.js__
 
