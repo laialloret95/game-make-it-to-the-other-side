@@ -24,7 +24,7 @@ class Game {
         // Global variables
         this.score = 0;
         this.collisionsCount = 0;
-        this.health = 2;
+        this.health = 10;
         this.frame = 0;
         this.gameSpeed = 1;
         this.safe = false;
@@ -50,12 +50,12 @@ class Game {
     initObstacles() {
         // ROAD
         // lane 1
-        for (let i = 0; i < 3; i++) { // 2 cars
+        for (let i = 0; i < 3; i++) { // 3 cars
             let x = i * 350;
             this.landArray.push(new this.obstacleConstructor(x, this.canvasHeight - this.cell * 3, this.cell*1.5, this.cell-1, 1.5, 'car'));
         }
         // lane 2
-        for (let i = 0; i < 3; i++) { // 2 cars
+        for (let i = 0; i < 2; i++) { // 2 cars
             let x = i * 300; 
             this.landArray.push(new this.obstacleConstructor(x, this.canvasHeight - this.cell * 5 + 15, this.cell*1.8, this.cell-1, -2, 'car'));
         }
@@ -71,14 +71,14 @@ class Game {
             this.waterArray.push(new this.obstacleConstructor(x, this.cell * 8, this.cell * 1.8, this.cell, -2, 'boat'));
         }
         // lane 5
-        for (let i = 0; i < 2; i++) { // 2 boats
-            let x = i * 300; 
+        for (let i = 0; i < 1; i++) { // 2 boats
+            let x = i * 400; 
             this.waterArray.push(new this.obstacleConstructor(x, this.cell * 7, this.cell * 1.8, this.cell, 2, 'boat'));
         }
         // lane 6
-        for (let i = 0; i < 3; i++) { // 3 doplhins
+        for (let i = 0; i < 3; i++) { // 3 turtles
             let x = i * 300;
-            this.waterArray.push(new this.obstacleConstructor(x, this.cell * 5, this.cell * 1.8, this.cell * 2, -1.5, 'dolphin'));
+            this.waterArray.push(new this.obstacleConstructor(x, this.cell * 5, this.cell * 1.8, this.cell * 2, -1.5, 'turtle'));
         }
 
         // SAND
@@ -89,7 +89,7 @@ class Game {
         }
         // lane 8
         for (let i = 0; i < 3; i++) { // 3 jabalis
-            let x = i * 300;
+            let x = i * 600;
             this.landArray.push(new this.obstacleConstructor(x, this.cell * 2, this.cell * 1.8, this.cell-1, -4, 'jabali'));
         }
     }
