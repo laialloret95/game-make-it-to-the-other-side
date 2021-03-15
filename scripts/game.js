@@ -31,6 +31,7 @@ class Game {
             this.arrows = [];
             this.arrows[e.code] = true;
             this.player.update(this.arrows);
+            
         })
         
         window.addEventListener('keyup', function(e) {
@@ -46,7 +47,24 @@ class Game {
     update() {
         this.clean();
         this.player.draw();
+        if (this.player.y < 0) this.scored();
+        this.showScoreBoard();
         window.requestAnimationFrame(this.update.bind(this));
+    }
+    scored() {
+        this.score++;
+        this.gameSpeed += 0.05;
+        this.player.x = this.canvasWidth / 2 - this.player.width / 2;
+        this.player.y = this.canvasHeight - this.player.height;
+    }
+    showScoreBoard() {
+        this.ctx3.fillStyle = 'white';
+        this.ctx3.strokeStyle = 'white'
+        this.ctx3.font = '22px Verdana';
+        this.ctx3.fillText(`Score: ${this.score}`, 20,30);
+        this.ctx3.fillText(`Health: ${this.health}`, 20,60);
+        this.ctx3.fillText(`Collisions: ${this.collisionsCount}`, 720,30);
+        this.ctx3.fillText(`Game Speed: ${this.gameSpeed.toFixed(2)}`, 650,60);
     }
     start() {
         this.assignControlsToKeys();

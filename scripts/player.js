@@ -40,6 +40,5 @@ class Player {
             this.x += this.cell;
             this.inMotion = true;
         }
-        // if (this.y < 0) scored();
     }
 }
