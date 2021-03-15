@@ -102,7 +102,7 @@ class Game {
             waterObj.updateObstacle(this.gameSpeed, this.canvasWidth);
             waterObj.drawObstacle(this.ctx1, this.frame,this.jabaliImg);
         });
-        if(this.player.y > 300 && this.player.y < 600) {
+        if(this.player.y >= 300 && this.player.y < 600) {
             this.safe = false;
             this.waterArray.forEach(waterObj => {
                 if (this.waterCollision(this.player, waterObj)) {
@@ -124,8 +124,8 @@ class Game {
     waterCollision(character, object) {
         return !(   character.x > object.x + object.width          ||
                     character.x + character.width < object.x       ||
-                    character.y > object.y + object.height - 1     || // Need to substract or add 1 in order to avoid double collision with boats
-                    character.y + character.height < object.y + 1);
+                    character.y + 1 > object.y + object.height     || // Need to substract or add 1 in order to avoid double collision with boats
+                    character.y + character.height - 1 < object.y);
     }
     resetGame() {
         this.player.resetPlayer(this.canvasWidth, this.canvasHeight);
