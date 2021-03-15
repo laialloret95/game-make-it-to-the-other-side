@@ -12,16 +12,15 @@ class Game {
         // Images
         this.jabaliImg = options.jabaliImg;
         this.monster = options.monster;
-        // Callback
+        // Print Game Over callback
         this.printGameOver = callback;
         // Global variables
         this.score = 0;
         this.collisionsCount = 0;
-        this.health = 1;
+        this.health = 2;
         this.frame = 0;
         this.gameSpeed = 1;
         this.safe = false;
-        this.gameOver = false;
         // Arrays
         this.arrows = [];
         this.landArray = [];
@@ -95,14 +94,13 @@ class Game {
         })
     }
     collision(character, enemy) {
-        return !(   character.x > enemy.x + enemy.width   ||
+        return !(   character.x > enemy.x + enemy.width        ||
                     character.x + character.width < enemy.x    ||
-                    character.y > enemy.y + enemy.height  ||
+                    character.y > enemy.y + enemy.height       ||
                     character.y + character.height < enemy.y);
     }
     resetGame() {
-        this.player.x = this.canvasWidth / 2 - this.player.width / 2;
-        this.player.y = this.canvasHeight - this.player.height;
+        this.player.resetPlayer(this.canvasWidth, this.canvasHeight);
         this.health--;
         this.collisionsCount++;
         this.gameSpeed = 1;

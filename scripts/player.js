@@ -41,4 +41,8 @@ class Player {
             this.inMotion = true;
         }
     }
+    resetPlayer(canvasWidth, canvasHeight) {
+        this.x = canvasWidth / 2 - this.width / 2;
+        this.y = canvasHeight - this.height;
+    }
 }
