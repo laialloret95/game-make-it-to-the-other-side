@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const monster = new Image();
     monster.src = '/images/monster.png'
 
-    let game;
     const cell = 60;
   
     function printGameOver() {
