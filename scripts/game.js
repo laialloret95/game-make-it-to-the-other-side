@@ -7,6 +7,8 @@ class Game {
         this.canvasHeight = options.canvasHeight;
         this.cell = options.cell;
         this.obstacleConstructor = options.obstacleConstructor;
+        this.rightcars = options.rightcars;
+        this.leftcars = options.leftcars;
         //Player
         this.player = options.player;
         // Images
@@ -22,6 +24,7 @@ class Game {
         this.frame = 0;
         this.gameSpeed = 1;
         this.safe = false;
+        this.randIndexCars = Math.floor(Math.random() * this.rightcars.length);
         // Arrays
         this.arrows = [];
         this.landArray = [];
@@ -43,12 +46,12 @@ class Game {
     initObstacles() {
         // ROAD
         // lane 1
-        for (let i = 0; i < 2; i++) { // 2 cars
+        for (let i = 0; i < 3; i++) { // 2 cars
             let x = i * 350;
             this.landArray.push(new this.obstacleConstructor(x, this.canvasHeight - this.cell * 3, this.cell*1.5, this.cell-1, 1.5, 'car'));
         }
         // lane 2
-        for (let i = 0; i < 2; i++) { // 2 cars
+        for (let i = 0; i < 3; i++) { // 2 cars
             let x = i * 300; 
             this.landArray.push(new this.obstacleConstructor(x, this.canvasHeight - this.cell * 5 + 15, this.cell*1.8, this.cell-1, -2, 'car'));
         }
@@ -94,7 +97,7 @@ class Game {
     handleObstacles() {
         this.landArray.forEach(landObj => {
             landObj.updateObstacle(this.gameSpeed, this.canvasWidth);
-            landObj.drawLandObstacles(this.ctx2, this.frame,this.jabaliImg, this.rockmanImg);
+            landObj.drawLandObstacles(this.ctx2, this.frame,this.jabaliImg, this.rockmanImg,this.leftcars[this.randIndexCars],this.rightcars[this.randIndexCars]);
             if(this.collision(this.player,landObj)) {
                 this.resetGame();
             }
@@ -134,6 +137,7 @@ class Game {
         this.collisionsCount++;
         this.gameSpeed = 1;
     }
+    getRandom
     update() {
         this.clean();
         this.player.draw(this.ctx2, this.monster);

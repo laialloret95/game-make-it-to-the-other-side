@@ -25,7 +25,7 @@ class Obstacle {
     //         ctx1.fillRect(this.x, this.y, this.width, this.height);
     //     }
     // }
-    drawLandObstacles(ctx2,frame, jabaliImg, rockmanImg) {
+    drawLandObstacles(ctx2,frame, jabaliImg, rockmanImg, LeftCarImg, RightCarImg) {
         if (this.type === 'jabali') {
             if (frame % this.randomise === 0) { // Controls animation movement
                 // cycle between the 7 columns of spritesheet
@@ -40,6 +40,18 @@ class Obstacle {
             // ctx2.fillRect(this.x, this.y, this.width, this.height);
             ctx2.drawImage(rockmanImg, this.frameX * 72.25, 0, 72.25, 55, 
                 this.x + 10, this.y, this.width / 1.05, this.height / 1.05)
+        }
+        else if (this.type === 'car' && this.speed < 0) {
+            ctx2.fillStyle = 'blue'
+            ctx2.fillRect(this.x, this.y, this.width, this.height);
+            ctx2.drawImage(LeftCarImg, this.frameX * 256, 0, 256, 256, 
+                this.x, this.y - this.height / 2, this.width, this.height*2)
+        }
+        else if (this.type === 'car' && this.speed > 0) {
+            ctx2.fillStyle = 'blue'
+            ctx2.fillRect(this.x, this.y, this.width, this.height);
+            ctx2.drawImage(RightCarImg, this.frameX * 256, 0, 256, 256, 
+                this.x, this.y - this.height / 2, this.width, this.height*2)
         }
         else {
             ctx2.fillStyle = 'blue'

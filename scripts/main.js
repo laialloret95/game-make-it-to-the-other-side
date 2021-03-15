@@ -30,7 +30,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const monster = new Image();
     monster.src = '/images/monster.png'
+    
+    const car1 = new Image(); car1.src = '/images/cars/audi-right.png';
+    const car2 = new Image(); car2.src = '/images/cars/Black_viper-right.png';
+    const car3 = new Image(); car3.src = '/images/cars/Car-right.png';
+    const car4 = new Image(); car4.src = '/images/cars/Mini_truck-left.png';
+    const car5 = new Image(); car5.src = '/images/cars/Mini_van-left.png';
+    const car6 = new Image(); car6.src = '/images/cars/Police-left.png';
 
+    const rightcars = [car1,car2,car3];
+    const leftcars = [car4,car5,car6];
     const cell = 60;
   
     function printGameOver() {
@@ -59,6 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 player: player = new Player(ctx2, cell,canvas.width, canvas.height),
                 cell: cell,
                 obstacleConstructor: Obstacle,
+                rightcars: rightcars,
+                leftcars: leftcars,
             },
             printGameOver
         );
@@ -83,6 +94,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 player: player = new Player(ctx2, cell,canvas.width, canvas.height),
                 cell: cell,
                 obstacleConstructor: Obstacle,
+                rightcars: rightcars,
+                leftcars: leftcars,
             },
             printGameOver
         );
