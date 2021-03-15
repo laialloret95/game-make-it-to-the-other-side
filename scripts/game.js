@@ -40,6 +40,7 @@ class Game {
         })
     }
     initObstacles() {
+        // ROAD
         // lane 1
         for (let i = 0; i < 2; i++) { // 2 cars
             let x = i * 350;
@@ -50,29 +51,33 @@ class Game {
             let x = i * 300; 
             this.landArray.push(new this.obstacleConstructor(x, this.canvasHeight - this.cell * 5 + 15, this.cell*1.8, this.cell-1, -2, 'car'));
         }
+
+        // WATER
         // lane 3
         for (let i = 0; i < 1; i++) { // 1 life preserver
-            this.waterArray.push(new this.obstacleConstructor(0, this.cell * 9, this.cell * 1.8, this.cell - 2, 1.5, 'lifePreserver'));
+            this.waterArray.push(new this.obstacleConstructor(0, this.cell * 9, this.cell * 1.8, this.cell, 1.5, 'lifePreserver'));
         }
         // lane 4
         for (let i = 0; i < 2; i++) { // 2 boats
             let x = i * 300; 
-            this.waterArray.push(new this.obstacleConstructor(x, this.cell * 8, this.cell * 1.8, this.cell - 2 , -2, 'boat'));
+            this.waterArray.push(new this.obstacleConstructor(x, this.cell * 8, this.cell * 1.8, this.cell, -2, 'boat'));
         }
         // lane 5
         for (let i = 0; i < 2; i++) { // 2 boats
             let x = i * 300; 
-            this.waterArray.push(new this.obstacleConstructor(x, this.cell * 7, this.cell * 1.8, this.cell - 2 , 2, 'boat'));
+            this.waterArray.push(new this.obstacleConstructor(x, this.cell * 7, this.cell * 1.8, this.cell, 2, 'boat'));
         }
         // lane 6
         for (let i = 0; i < 3; i++) { // 3 doplhins
             let x = i * 300;
-            this.waterArray.push(new this.obstacleConstructor(x, this.cell * 5, this.cell * 1.8, this.cell*2 - 2, -1.5, 'dolphin'));
+            this.waterArray.push(new this.obstacleConstructor(x, this.cell * 5, this.cell * 1.8, this.cell * 2, -1.5, 'dolphin'));
         }
+
+        // SAND
         // lane 7
         for (let i = 0; i < 2; i++) { // 3 rockman
             let x = i * 300;
-            this.landArray.push(new this.obstacleConstructor(x, this.cell * 3.5, this.cell * 1.8, this.cell-1, 2, 'rockman'));
+            this.landArray.push(new this.obstacleConstructor(x, this.cell * 3.5, this.cell * 1.8, this.cell -1 , 2, 'rockman'));
         }
         // lane 8
         for (let i = 0; i < 3; i++) { // 3 jabalis
@@ -92,21 +97,35 @@ class Game {
             if(this.collision(this.player,landObj)) {
                 this.resetGame();
             }
-        })
+        });
         this.waterArray.forEach( waterObj => {
             waterObj.updateObstacle(this.gameSpeed, this.canvasWidth);
             waterObj.drawObstacle(this.ctx1, this.frame,this.jabaliImg);
-            if (this.collision(this.player, waterObj)) {
-                this.player.x += waterObj.speed;
-                this.safe = true;
+        });
+        if(this.player.y > 300 && this.player.y < 600) {
+            this.safe = false;
+            this.waterArray.forEach(waterObj => {
+                if (this.waterCollision(this.player, waterObj)) {
+                    this.player.x += waterObj.speed;
+                    this.safe = true;
+                }
+            })
+            if (!this.safe) {
+                this.resetGame();
             }
-        })
+        }
     }
     collision(character, enemy) {
         return !(   character.x > enemy.x + enemy.width        ||
                     character.x + character.width < enemy.x    ||
                     character.y > enemy.y + enemy.height       ||
                     character.y + character.height < enemy.y);
+    }
+    waterCollision(character, object) {
+        return !(   character.x > object.x + object.width          ||
+                    character.x + character.width < object.x       ||
+                    character.y > object.y + object.height - 1     || // Need to substract or add 1 in order to avoid double collision with boats
+                    character.y + character.height < object.y + 1);
     }
     resetGame() {
         this.player.resetPlayer(this.canvasWidth, this.canvasHeight);
@@ -143,5 +162,4 @@ class Game {
         this.initObstacles();
         window.requestAnimationFrame(this.update.bind(this));
     }
-
 }
