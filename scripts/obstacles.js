@@ -11,19 +11,45 @@ class Obstacle {
         this.frameY = 0;
         this.randomise = Math.floor(Math.random() * 10 + 5); // between 30 and 60
     }
-    drawObstacle(ctx1,frame, jabaliImg) {
+    // drawObstacle(ctx1,frame, jabaliImg) {
+    //     if (this.type === 'jabali') {
+    //         if (frame % this.randomise === 0) { // Controls animation movement
+    //             // cycle between the 2 columns of spritesheet
+    //             if (this.frameX >= 7) this.frameX = 0;
+    //             else this.frameX++;
+    //         }
+    //         ctx1.drawImage(jabaliImg, this.frameX * 72.25, 0, 72.25, 55, 
+    //             this.x, this.y, this.width, this.height)
+    //     } else {
+    //         ctx1.fillStyle = 'blue'
+    //         ctx1.fillRect(this.x, this.y, this.width, this.height);
+    //     }
+    // }
+    drawLandObstacles(ctx2,frame, jabaliImg, rockmanImg) {
         if (this.type === 'jabali') {
             if (frame % this.randomise === 0) { // Controls animation movement
-                // cycle between the 2 columns of spritesheet
+                // cycle between the 7 columns of spritesheet
                 if (this.frameX >= 7) this.frameX = 0;
                 else this.frameX++;
             }
-            ctx1.drawImage(jabaliImg, this.frameX * 72.25, 0, 72.25, 55, 
+            ctx2.drawImage(jabaliImg, this.frameX * 72.25, 0, 72.25, 55, 
                 this.x, this.y, this.width, this.height)
-        } else {
-            ctx1.fillStyle = 'blue'
-            ctx1.fillRect(this.x, this.y, this.width, this.height);
+        } 
+        else if (this.type === 'rockman') {
+            // ctx2.fillStyle = 'blue'
+            // ctx2.fillRect(this.x, this.y, this.width, this.height);
+            ctx2.drawImage(rockmanImg, this.frameX * 72.25, 0, 72.25, 55, 
+                this.x + 10, this.y, this.width / 1.05, this.height / 1.05)
         }
+        else {
+            ctx2.fillStyle = 'blue'
+            ctx2.fillRect(this.x, this.y, this.width, this.height);
+        }
+    }
+    drawWaterObstacles(ctx1, waterImg) {
+        ctx1.fillStyle = 'blue'
+        ctx1.fillRect(this.x, this.y, this.width, this.height);
+        // ctx2.drawImage(car, this.frameX * this.width, this.carType * this.height, grid * 2, grid, this.x, this.y, this.width, this.height);
     }
     updateObstacle(gameSpeed, canvasWidth) {
         this.x += this.speed * gameSpeed; // multiplying to mantain obstacle directions (we are going to have negative value for those going left)

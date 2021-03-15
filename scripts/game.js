@@ -11,6 +11,7 @@ class Game {
         this.player = options.player;
         // Images
         this.jabaliImg = options.jabaliImg;
+        this.rockmanImg = options.rockmanImg;
         this.monster = options.monster;
         // Print Game Over callback
         this.printGameOver = callback;
@@ -77,7 +78,7 @@ class Game {
         // lane 7
         for (let i = 0; i < 2; i++) { // 3 rockman
             let x = i * 300;
-            this.landArray.push(new this.obstacleConstructor(x, this.cell * 3.5, this.cell * 1.8, this.cell -1 , 2, 'rockman'));
+            this.landArray.push(new this.obstacleConstructor(x, this.cell * 3.5, this.cell * 1.8, this.cell * 1.3 -1 , 2, 'rockman'));
         }
         // lane 8
         for (let i = 0; i < 3; i++) { // 3 jabalis
@@ -93,14 +94,14 @@ class Game {
     handleObstacles() {
         this.landArray.forEach(landObj => {
             landObj.updateObstacle(this.gameSpeed, this.canvasWidth);
-            landObj.drawObstacle(this.ctx1, this.frame,this.jabaliImg);
+            landObj.drawLandObstacles(this.ctx2, this.frame,this.jabaliImg, this.rockmanImg);
             if(this.collision(this.player,landObj)) {
                 this.resetGame();
             }
         });
         this.waterArray.forEach( waterObj => {
             waterObj.updateObstacle(this.gameSpeed, this.canvasWidth);
-            waterObj.drawObstacle(this.ctx1, this.frame,this.jabaliImg);
+            waterObj.drawWaterObstacles(this.ctx1, this.frame,this.jabaliImg);
         });
         if(this.player.y >= 300 && this.player.y < 600) {
             this.safe = false;
