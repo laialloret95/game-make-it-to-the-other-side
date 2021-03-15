@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             monster: monster,
             player: player = new Player(ctx2, cell,canvas.width, canvas.height),
             cell: cell,
+            obstacleConstructor: Obstacle,
         },
         printGameOver
     );

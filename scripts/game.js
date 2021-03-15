@@ -6,6 +6,7 @@ class Game {
         this.canvasWidth = options.canvasWidth;
         this.canvasHeight = options.canvasHeight;
         this.cell = options.cell;
+        this.obstacleConstructor = options.obstacleConstructor;
         //Player
         this.player = options.player;
         // Images
@@ -39,14 +40,64 @@ class Game {
             player.inMotion = false;
         })
     }
+    initObstacles() {
+        // lane 1
+        for (let i = 0; i < 2; i++) { // 2 cars
+            let x = i * 350;
+            this.landArray.push(new this.obstacleConstructor(x, this.canvasHeight - this.cell * 3, this.cell*1.5, this.cell-1, 1.5, 'car'));
+        }
+        // lane 2
+        for (let i = 0; i < 2; i++) { // 2 cars
+            let x = i * 300; 
+            this.landArray.push(new this.obstacleConstructor(x, this.canvasHeight - this.cell * 5 + 15, this.cell*1.8, this.cell-1, -2, 'car'));
+        }
+        // lane 3 
+        for (let i = 0; i < 3; i++) { // 3 doplhins
+            let x = i * 300;
+            this.waterArray.push(new this.obstacleConstructor(x, this.canvasHeight - this.cell * 6, this.cell*1.8, this.cell-1, 1.5, 'dolphin'));
+        }
+        // lane 4
+        for (let i = 0; i < 2; i++) { // 2 boats
+            let x = i * 300; 
+            this.waterArray.push(new this.obstacleConstructor(x, this.canvasHeight - this.cell * 7, this.cell*1.8, this.cell-1, -2, 'boat'));
+        }
+        // lane 5
+        for (let i = 0; i < 1; i++) { // 1 life preserver
+            this.waterArray.push(new this.obstacleConstructor(0, this.canvasHeight - this.cell * 8, this.cell*1.8, this.cell-1, 1.5, 'lifePreserver'));
+        }
+        // lane 6
+        for (let i = 0; i < 3; i++) { // 3 jabalis
+            let x = i * 300;
+            this.landArray.push(new this.obstacleConstructor(x, this.canvasHeight - this.cell * 11.5, this.cell*1.8, this.cell-1, -4, 'jabali'));
+        }
+        // lane 7
+        for (let i = 0; i < 2; i++) { // 3 rockman
+            let x = i * 300;
+            this.landArray.push(new this.obstacleConstructor(x, this.canvasHeight - this.cell * 13, this.cell*1.8, this.cell-1, 2, 'rockman'));
+        }
+    }
     clean() {
         this.ctx1.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
         this.ctx2.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
         this.ctx3.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
     }
+    handleObstacles() {
+        this.landArray.forEach(landObj => {
+            landObj.updateObstacle(this.gameSpeed, this.canvasWidth);
+            landObj.drawObstacle(this.ctx1, this.frame,this.jabaliImg);
+            // if(collision(player,landObj)) {
+            //     resetGame();
+            // }
+        })
+        this.waterArray.forEach( waterObj => {
+            waterObj.updateObstacle(this.gameSpeed, this.canvasWidth);
+            waterObj.drawObstacle(this.ctx1, this.frame,this.jabaliImg);
+        })
+    }
     update() {
         this.clean();
         this.player.draw();
+        this.handleObstacles();
         if (this.player.y < 0) this.scored();
         this.showScoreBoard();
         window.requestAnimationFrame(this.update.bind(this));
@@ -68,6 +119,7 @@ class Game {
     }
     start() {
         this.assignControlsToKeys();
+        this.initObstacles();
         window.requestAnimationFrame(this.update.bind(this));
     }
 
