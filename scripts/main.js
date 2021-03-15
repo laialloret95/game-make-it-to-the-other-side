@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const startButton = document.getElementById('start');
     const gamePage = document.getElementById('game');
     const gameOverPage = document.getElementById('gameover');
+    const playAgainButton = document.getElementById('play-again');
 
     // Canvas Layers
     const canvas = document.getElementById('canvas1');
@@ -42,22 +43,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
         gamePage.classList.remove('hide');
         gamePage.classList.add('show');
-    })
 
-    const mainGame = new Game(
-        {
-            ctx1: ctx1,
-            ctx2: ctx2,
-            ctx3: ctx2,
-            canvasWidth: canvas.width,
-            canvasHeight: canvas.height,
-            jabaliImg: jabaliImg,
-            monster: monster,
-            player: player = new Player(ctx2, cell,canvas.width, canvas.height),
-            cell: cell,
-            obstacleConstructor: Obstacle,
-        },
-        printGameOver
-    );
-    mainGame.start();
+        const mainGame = new Game(
+            {
+                ctx1: ctx1,
+                ctx2: ctx2,
+                ctx3: ctx2,
+                canvasWidth: canvas.width,
+                canvasHeight: canvas.height,
+                jabaliImg: jabaliImg,
+                monster: monster,
+                player: player = new Player(ctx2, cell,canvas.width, canvas.height),
+                cell: cell,
+                obstacleConstructor: Obstacle,
+            },
+            printGameOver
+        );
+        mainGame.start();
+    });
+
+    playAgainButton.addEventListener('click', () => {
+        gameOverPage.style = 'display: none';
+        gamePage.classList.add('show');
+        gamePage.classList.remove('hide');
+
+        const mainGame = new Game(
+            {
+                ctx1: ctx1,
+                ctx2: ctx2,
+                ctx3: ctx2,
+                canvasWidth: canvas.width,
+                canvasHeight: canvas.height,
+                jabaliImg: jabaliImg,
+                monster: monster,
+                player: player = new Player(ctx2, cell,canvas.width, canvas.height),
+                cell: cell,
+                obstacleConstructor: Obstacle,
+            },
+            printGameOver
+        );
+        mainGame.start();
+    });
 })

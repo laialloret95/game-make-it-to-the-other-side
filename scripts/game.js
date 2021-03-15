@@ -13,11 +13,11 @@ class Game {
         this.jabaliImg = options.jabaliImg;
         this.monster = options.monster;
         // Callback
-        this.cb = callback;
+        this.printGameOver = callback;
         // Global variables
         this.score = 0;
         this.collisionsCount = 0;
-        this.health = 10;
+        this.health = 1;
         this.frame = 0;
         this.gameSpeed = 1;
         this.safe = false;
@@ -85,22 +85,36 @@ class Game {
         this.landArray.forEach(landObj => {
             landObj.updateObstacle(this.gameSpeed, this.canvasWidth);
             landObj.drawObstacle(this.ctx1, this.frame,this.jabaliImg);
-            // if(collision(player,landObj)) {
-            //     resetGame();
-            // }
+            if(this.collision(this.player,landObj)) {
+                this.resetGame();
+            }
         })
         this.waterArray.forEach( waterObj => {
             waterObj.updateObstacle(this.gameSpeed, this.canvasWidth);
             waterObj.drawObstacle(this.ctx1, this.frame,this.jabaliImg);
         })
     }
+    collision(character, enemy) {
+        return !(   character.x > enemy.x + enemy.width   ||
+                    character.x + character.width < enemy.x    ||
+                    character.y > enemy.y + enemy.height  ||
+                    character.y + character.height < enemy.y);
+    }
+    resetGame() {
+        this.player.x = this.canvasWidth / 2 - this.player.width / 2;
+        this.player.y = this.canvasHeight - this.player.height;
+        this.health--;
+        this.collisionsCount++;
+        this.gameSpeed = 1;
+    }
     update() {
         this.clean();
-        this.player.draw();
+        this.player.draw(this.ctx2, this.monster);
         this.handleObstacles();
         if (this.player.y < 0) this.scored();
         this.showScoreBoard();
-        window.requestAnimationFrame(this.update.bind(this));
+        if (this.health > 0) window.requestAnimationFrame(this.update.bind(this));
+        else this.printGameOver();
     }
     scored() {
         this.score++;
