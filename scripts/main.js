@@ -47,12 +47,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const rightCars = [car1,car2,car3];
     const leftCars = [car4,car5,car6];
 
-    const boat1 = new Image(); boat1.src = '/images/boats/blue-right.png';
-    const boat2 = new Image(); boat2.src = '/images/boats/green-orange-right.png';
-    const boat3 = new Image(); boat3.src = '/images/boats/green-right.png';
-    const boat4 = new Image(); boat4.src = '/images/boats/purple-left.png';
-    const boat5 = new Image(); boat5.src = '/images/boats/red-left.png';
-    const boat6 = new Image(); boat6.src = '/images/boats/yellow-left.png';
+    const boat1 = new Image(); boat1.src = '/images/boats/inflable-yellow-right.png';
+    const boat2 = new Image(); boat2.src = '/images/boats/inflatable-boat-right.png';
+    const boat3 = new Image(); boat3.src = '/images/boats/inflable-right.png';
+    const boat4 = new Image(); boat4.src = '/images/boats/inflable-left.png';
+    const boat5 = new Image(); boat5.src = '/images/boats/inflable-yellow-left.png';
+    const boat6 = new Image(); boat6.src = '/images/boats/inflatable-boat-left.png';
 
     const rightBoats = [boat1,boat2,boat3];
     const leftBoats = [boat4,boat5,boat6];
