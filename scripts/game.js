@@ -13,7 +13,7 @@ class Game {
         this.player = options.player;
         // Images
         this.jabaliImg = options.jabaliImg;
-        this.rockmanImg = options.rockmanImg;
+        this.assasinImg = options.assasinImg;
         this.monster = options.monster;
         // Print Game Over callback
         this.printGameOver = callback;
@@ -79,9 +79,9 @@ class Game {
 
         // SAND
         // lane 7
-        for (let i = 0; i < 2; i++) { // 3 rockman
+        for (let i = 0; i < 2; i++) { // 3 assasin
             let x = i * 300;
-            this.landArray.push(new this.obstacleConstructor(x, this.cell * 3.5, this.cell * 1.8, this.cell * 1.3 -1 , 2, 'rockman'));
+            this.landArray.push(new this.obstacleConstructor(x, this.cell * 3.5, this.cell * 1.8, this.cell * 1.3 -1 , 2, 'assasin'));
         }
         // lane 8
         for (let i = 0; i < 3; i++) { // 3 jabalis
@@ -97,7 +97,7 @@ class Game {
     handleObstacles() {
         this.landArray.forEach(landObj => {
             landObj.updateObstacle(this.gameSpeed, this.canvasWidth);
-            landObj.drawLandObstacles(this.ctx2, this.frame,this.jabaliImg, this.rockmanImg,this.leftCars, this.rightCars);
+            landObj.drawLandObstacles(this.ctx2, this.frame,this.jabaliImg, this.assasinImg,this.leftCars, this.rightCars);
             if(this.collision(this.player,landObj)) {
                 this.resetGame();
             }
@@ -144,6 +144,7 @@ class Game {
         this.handleObstacles();
         if (this.player.y < 0) this.scored();
         this.showScoreBoard();
+        this.frame++;
         if (this.health > 0) window.requestAnimationFrame(this.update.bind(this));
         else this.printGameOver();
     }

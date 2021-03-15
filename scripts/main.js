@@ -25,8 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const jabaliImg = new Image();
     jabaliImg.src = '/images/porc-senglar.png'
 
-    const rockmanImg = new Image();
-    rockmanImg.src = '/images/rock-man.png'
+    const assasinImg = new Image();
+    assasinImg.src = '/images/rockman.png'
 
     const monster = new Image();
     monster.src = '/images/monster.png'
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 canvasHeight: canvas.height,
                 jabaliImg: jabaliImg,
                 monster: monster,
-                rockmanImg: rockmanImg,
+                assasinImg: assasinImg,
                 player: player = new Player(ctx2, cell,canvas.width, canvas.height),
                 cell: cell,
                 obstacleConstructor: Obstacle,
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 canvasHeight: canvas.height,
                 jabaliImg: jabaliImg,
                 monster: monster,
-                rockmanImg: rockmanImg,
+                assasinImg: assasinImg,
                 player: player = new Player(ctx2, cell,canvas.width, canvas.height),
                 cell: cell,
                 obstacleConstructor: Obstacle,
