@@ -10,7 +10,7 @@ class Obstacle {
         this.frameX = 0;
         this.frameY = 0;
         this.randomise = Math.floor(Math.random() * 10 + 5); // between 30 and 60
-        this.carNum = Math.floor(Math.random() * 3)
+        this.elemNum = Math.floor(Math.random() * 3)
     }
     drawLandObstacles(ctx2,frame, jabaliImg, assasinImg, LeftCarArray, RightCarArray) {
         if (this.type === 'jabali') {
@@ -32,11 +32,11 @@ class Obstacle {
                 this.x - 15, this.y - 20, this.width*1.5, this.height*1.5)
         }
         else if (this.type === 'car' && this.speed < 0) {
-            ctx2.drawImage(LeftCarArray[this.carNum], this.frameX * 256, 0, 256, 256, 
+            ctx2.drawImage(LeftCarArray[this.elemNum], this.frameX * 256, 0, 256, 256, 
                 this.x - 10, this.y - 45, this.width * 1.22, this.height * 2.6)
         }
         else if (this.type === 'car' && this.speed > 0) {
-            ctx2.drawImage(RightCarArray[this.carNum], this.frameX * 256, 0, 256, 256, 
+            ctx2.drawImage(RightCarArray[this.elemNum], this.frameX * 256, 0, 256, 256, 
                 this.x - 10, this.y - 45, this.width * 1.22, this.height * 2.6)
         }
         else {
@@ -44,22 +44,28 @@ class Obstacle {
             ctx2.fillRect(this.x, this.y, this.width, this.height);
         }
     }
-    drawWaterObstacles(ctx1, lifePreserverImg) {
+    drawWaterObstacles(ctx1, lifePreserverImg, leftBoatArray, rightBoatArray, turtleImg) {
         if (this.type === 'lifePreserver') {
             ctx1.drawImage(lifePreserverImg,this.x, this.y, this.width, this.height)
-        } else {
-            ctx1.fillStyle = 'blue'
-            ctx1.fillRect(this.x, this.y, this.width, this.height);
+        } else if (this.type === 'boat' && this.speed > 0){
+            ctx1.drawImage(rightBoatArray[this.elemNum],this.x, this.y, this.width, this.height)
+        } else if (this.type === 'boat' && this.speed < 0){
+            ctx1.drawImage(leftBoatArray[this.elemNum],this.x, this.y, this.width, this.height)
+        }
+        else {
+            // ctx1.fillStyle = 'blue'
+            // ctx1.fillRect(this.x, this.y, this.width, this.height);
+            ctx1.drawImage(turtleImg,this.x, this.y, this.width, this.height)
         }
     }
     updateObstacle(gameSpeed, canvasWidth) {
         this.x += this.speed * gameSpeed; // multiplying to mantain obstacle directions (we are going to have negative value for those going left)
         if (this.speed > 0 && this.x > canvasWidth + this.width) { // make obstacles going right reapear
             this.x = 0 - this.width;
-            this.carNum = Math.floor(Math.random() * 3)
+            this.elemNum = Math.floor(Math.random() * 3)
         } else if (this.speed < 0 && this.x + this.width < 0) { // make obstacles going left reapear
             this.x = canvasWidth + this.width;
-            this.carNum = Math.floor(Math.random() * 3)
+            this.elemNum = Math.floor(Math.random() * 3)
         }
     }
 }

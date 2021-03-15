@@ -9,6 +9,8 @@ class Game {
         this.obstacleConstructor = options.obstacleConstructor;
         this.rightCars = options.rightCars;
         this.leftCars = options.leftCars;
+        this.rightBoats = options.rightBoats,
+        this.leftBoats = options.leftBoats,
         //Player
         this.player = options.player;
         // Images
@@ -16,6 +18,7 @@ class Game {
         this.assasinImg = options.assasinImg;
         this.monster = options.monster;
         this.lifePreserverImg = options.lifePreserverImg;
+        this.turtleImg = options.turtleImg;
         // Print Game Over callback
         this.printGameOver = callback;
         // Global variables
@@ -105,7 +108,7 @@ class Game {
         });
         this.waterArray.forEach( waterObj => {
             waterObj.updateObstacle(this.gameSpeed, this.canvasWidth);
-            waterObj.drawWaterObstacles(this.ctx1, this.lifePreserverImg);
+            waterObj.drawWaterObstacles(this.ctx1, this.lifePreserverImg, this.leftBoats, this.rightBoats, this.turtleImg);
         });
         if(this.player.y >= 300 && this.player.y < 600) {
             this.safe = false;
