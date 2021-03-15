@@ -7,8 +7,8 @@ class Game {
         this.canvasHeight = options.canvasHeight;
         this.cell = options.cell;
         this.obstacleConstructor = options.obstacleConstructor;
-        this.rightcars = options.rightcars;
-        this.leftcars = options.leftcars;
+        this.rightCars = options.rightCars;
+        this.leftCars = options.leftCars;
         //Player
         this.player = options.player;
         // Images
@@ -24,7 +24,7 @@ class Game {
         this.frame = 0;
         this.gameSpeed = 1;
         this.safe = false;
-        this.randIndexCars = Math.floor(Math.random() * this.rightcars.length);
+        this.randIndexCars = Math.floor(Math.random() * this.rightCars.length);
         // Arrays
         this.arrows = [];
         this.landArray = [];
@@ -97,7 +97,7 @@ class Game {
     handleObstacles() {
         this.landArray.forEach(landObj => {
             landObj.updateObstacle(this.gameSpeed, this.canvasWidth);
-            landObj.drawLandObstacles(this.ctx2, this.frame,this.jabaliImg, this.rockmanImg,this.leftcars[this.randIndexCars],this.rightcars[this.randIndexCars]);
+            landObj.drawLandObstacles(this.ctx2, this.frame,this.jabaliImg, this.rockmanImg,this.leftCars, this.rightCars);
             if(this.collision(this.player,landObj)) {
                 this.resetGame();
             }

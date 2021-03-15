@@ -38,8 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const car5 = new Image(); car5.src = '/images/cars/Mini_van-left.png';
     const car6 = new Image(); car6.src = '/images/cars/Police-left.png';
 
-    const rightcars = [car1,car2,car3];
-    const leftcars = [car4,car5,car6];
+    const rightCars = [car1,car2,car3];
+    const leftCars = [car4,car5,car6];
     const cell = 60;
   
     function printGameOver() {
@@ -68,8 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 player: player = new Player(ctx2, cell,canvas.width, canvas.height),
                 cell: cell,
                 obstacleConstructor: Obstacle,
-                rightcars: rightcars,
-                leftcars: leftcars,
+                rightCars: rightCars,
+                leftCars: leftCars,
             },
             printGameOver
         );
