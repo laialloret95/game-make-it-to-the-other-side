@@ -28,6 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const assasinImg = new Image();
     assasinImg.src = '/images/rockman.png'
 
+    const lifePreserverImg = new Image();
+    lifePreserverImg.src = '/images/life-preserver.png'
+
     const monster = new Image();
     monster.src = '/images/monster.png'
     
@@ -65,6 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 jabaliImg: jabaliImg,
                 monster: monster,
                 assasinImg: assasinImg,
+                lifePreserverImg: lifePreserverImg,
                 player: player = new Player(ctx2, cell,canvas.width, canvas.height),
                 cell: cell,
                 obstacleConstructor: Obstacle,
@@ -91,6 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 jabaliImg: jabaliImg,
                 monster: monster,
                 assasinImg: assasinImg,
+                lifePreserverImg: lifePreserverImg,
                 player: player = new Player(ctx2, cell,canvas.width, canvas.height),
                 cell: cell,
                 obstacleConstructor: Obstacle,

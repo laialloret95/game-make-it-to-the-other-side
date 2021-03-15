@@ -15,6 +15,7 @@ class Game {
         this.jabaliImg = options.jabaliImg;
         this.assasinImg = options.assasinImg;
         this.monster = options.monster;
+        this.lifePreserverImg = options.lifePreserverImg;
         // Print Game Over callback
         this.printGameOver = callback;
         // Global variables
@@ -59,7 +60,7 @@ class Game {
         // WATER
         // lane 3
         for (let i = 0; i < 1; i++) { // 1 life preserver
-            this.waterArray.push(new this.obstacleConstructor(0, this.cell * 9, this.cell * 1.8, this.cell, 1.5, 'lifePreserver'));
+            this.waterArray.push(new this.obstacleConstructor(0, this.cell * 9, this.cell * 1.2, this.cell, 1.5, 'lifePreserver'));
         }
         // lane 4
         for (let i = 0; i < 2; i++) { // 2 boats
@@ -104,7 +105,7 @@ class Game {
         });
         this.waterArray.forEach( waterObj => {
             waterObj.updateObstacle(this.gameSpeed, this.canvasWidth);
-            waterObj.drawWaterObstacles(this.ctx1, this.frame,this.jabaliImg);
+            waterObj.drawWaterObstacles(this.ctx1, this.lifePreserverImg);
         });
         if(this.player.y >= 300 && this.player.y < 600) {
             this.safe = false;
