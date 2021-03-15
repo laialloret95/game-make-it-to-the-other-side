@@ -94,8 +94,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 player: player = new Player(ctx2, cell,canvas.width, canvas.height),
                 cell: cell,
                 obstacleConstructor: Obstacle,
-                rightcars: rightcars,
-                leftcars: leftcars,
+                rightCars: rightCars,
+                leftCars: leftCars,
             },
             printGameOver
         );
