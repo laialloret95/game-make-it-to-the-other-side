@@ -43,7 +43,7 @@ class Player {
     resetPlayer(canvasWidth, canvasHeight) {
         setTimeout(() => {
             this.x = canvasWidth / 2 - this.width / 2;
-        this.y = canvasHeight - this.height;
+            this.y = canvasHeight - this.height;
         }, 500)
     }
 
