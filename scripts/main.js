@@ -34,9 +34,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const turtleImg = new Image();
     turtleImg.src = '/images/turtle.png'
 
-    const monster = new Image();
-    monster.src = '/images/monster.png'
-    
+    const playerUpImg = new Image(); playerUpImg.src = '/images/women-phone-up.png';
+    const playerLeftImg = new Image(); playerLeftImg.src = '/images/women-phone-left.png';
+    const playerRightImg = new Image(); playerRightImg.src = '/images/women-phone-right.png';
+    const playerDownImg = new Image(); playerDownImg.src = '/images/women-phone-down.png';
+
+    const playerImgs = [playerUpImg,playerLeftImg,playerDownImg,playerRightImg];
+
     const car1 = new Image(); car1.src = '/images/cars/audi-right.png';
     const car2 = new Image(); car2.src = '/images/cars/Black_viper-right.png';
     const car3 = new Image(); car3.src = '/images/cars/Car-right.png';
@@ -80,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 canvasWidth: canvas.width,
                 canvasHeight: canvas.height,
                 jabaliImg: jabaliImg,
-                monster: monster,
+                playerImgs: playerImgs,
                 assasinImg: assasinImg,
                 turtleImg: turtleImg,
                 lifePreserverImg: lifePreserverImg,
@@ -110,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 canvasWidth: canvas.width,
                 canvasHeight: canvas.height,
                 jabaliImg: jabaliImg,
-                monster: monster,
+                playerImgs: playerImgs,
                 assasinImg: assasinImg,
                 turtleImg: turtleImg,
                 lifePreserverImg: lifePreserverImg,

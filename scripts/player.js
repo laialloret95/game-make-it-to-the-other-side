@@ -18,10 +18,9 @@ class Player {
         this.frameY = 0;
     }
     draw(ctx2,img) {
-        this.context.fillStyle = 'black';
-        this.context.fillRect(this.x, this.y, this.width, this.height);
-        ctx2.drawImage(img, 0, 0, 463, 533, 
-            this.x, this.y, this.width, this.height)
+        // this.context.fillStyle = 'black';
+        // this.context.fillRect(this.x, this.y, this.width, this.height);
+        ctx2.drawImage(img,this.x + 3, this.y, this.width / 1.1, this.height)
     }
     update(arrows) {
         if (arrows['ArrowUp'] && !this.inMotion) {

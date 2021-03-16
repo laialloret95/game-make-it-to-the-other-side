@@ -16,7 +16,7 @@ class Game {
         // Images
         this.jabaliImg = options.jabaliImg;
         this.assasinImg = options.assasinImg;
-        this.monster = options.monster;
+        this.playerImgs = options.playerImgs;
         this.lifePreserverImg = options.lifePreserverImg;
         this.turtleImg = options.turtleImg;
         // Print Game Over callback
@@ -29,17 +29,21 @@ class Game {
         this.gameSpeed = 1;
         this.safe = false;
         this.randIndexCars = Math.floor(Math.random() * this.rightCars.length);
+        this.playerImg = this.playerImgs[0];
         // Arrays
-        this.arrows = [];
         this.landArray = [];
         this.waterArray = [];
     }
     assignControlsToKeys() {
+        const self = this;
         window.addEventListener('keydown', function(e) {
             this.arrows = [];
             this.arrows[e.code] = true;
             this.player.update(this.arrows);
-            
+            if (this.arrows['ArrowUp']) self.playerImg = self.playerImgs[0];
+            if (this.arrows['ArrowLeft']) self.playerImg = self.playerImgs[1];
+            if (this.arrows['ArrowDown']) self.playerImg = self.playerImgs[2];
+            if (this.arrows['ArrowRight']) self.playerImg = self.playerImgs[3];
         })
         
         window.addEventListener('keyup', function(e) {
@@ -141,10 +145,9 @@ class Game {
         this.collisionsCount++;
         this.gameSpeed = 1;
     }
-    getRandom
     update() {
         this.clean();
-        this.player.draw(this.ctx2, this.monster);
+        this.player.draw(this.ctx2, this.playerImg);
         this.handleObstacles();
         if (this.player.y < 0) this.scored();
         this.showScoreBoard();
