@@ -22,16 +22,16 @@ document.addEventListener('DOMContentLoaded', () => {
     canvas3.height = 900;
 
     // Images
-    const jabaliImg = new Image();
+    const jabaliImg = new Image(); 
     jabaliImg.src = '/images/porc-senglar.png'
 
-    const assasinImg = new Image();
+    const assasinImg = new Image(); 
     assasinImg.src = '/images/rockman.png'
 
-    const lifePreserverImg = new Image();
+    const lifePreserverImg = new Image(); 
     lifePreserverImg.src = '/images/life-preserver.png'
 
-    const turtleImg = new Image();
+    const turtleImg = new Image(); 
     turtleImg.src = '/images/turtle.png'
 
     const playerUpImg = new Image(); playerUpImg.src = '/images/women-phone-up.png';
@@ -61,6 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const rightBoats = [boat1,boat2,boat3];
     const leftBoats = [boat4,boat5,boat6];
 
+    const collisionImg = new Image(); 
+    collisionImg.src = '/images/collisions.png';
+
     const cell = 60;
   
     function printGameOver() {
@@ -88,6 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 assasinImg: assasinImg,
                 turtleImg: turtleImg,
                 lifePreserverImg: lifePreserverImg,
+                collisionImg : collisionImg,
                 player: player = new Player(ctx2, cell,canvas.width, canvas.height),
                 cell: cell,
                 obstacleConstructor: Obstacle,
@@ -118,6 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 assasinImg: assasinImg,
                 turtleImg: turtleImg,
                 lifePreserverImg: lifePreserverImg,
+                collisionImg : collisionImg,
                 player: player = new Player(ctx2, cell,canvas.width, canvas.height),
                 cell: cell,
                 obstacleConstructor: Obstacle,

@@ -19,6 +19,7 @@ class Game {
         this.playerImgs = options.playerImgs;
         this.lifePreserverImg = options.lifePreserverImg;
         this.turtleImg = options.turtleImg;
+        this.collisionImg = options.collisionImg;
         // Print Game Over callback
         this.printGameOver = callback;
         // Global variables
@@ -107,6 +108,7 @@ class Game {
             landObj.updateObstacle(this.gameSpeed, this.canvasWidth);
             landObj.drawLandObstacles(this.ctx2, this.frame,this.jabaliImg, this.assasinImg,this.leftCars, this.rightCars);
             if(this.collision(this.player,landObj)) {
+                this.ctx2.drawImage(this.collisionImg, 0, 100, 100, 100, this.player.x, this.player.y, 50, 50)
                 this.resetGame();
             }
         });
@@ -140,10 +142,11 @@ class Game {
                     character.y + character.height - 1 < object.y);
     }
     resetGame() {
+        this.playerImg = this.playerImgs[0];
         this.player.resetPlayer(this.canvasWidth, this.canvasHeight);
+        console.log('reset')
         this.health--;
         this.collisionsCount++;
-        this.gameSpeed = 1;
     }
     update() {
         this.clean();
@@ -152,8 +155,11 @@ class Game {
         if (this.player.y < 0) this.scored();
         this.showScoreBoard();
         this.frame++;
-        if (this.health > 0) window.requestAnimationFrame(this.update.bind(this));
-        else this.printGameOver();
+        if (this.health <= 0){
+            return this.printGameOver();
+        } 
+        window.requestAnimationFrame(this.update.bind(this));
+        
     }
     scored() {
         this.score++;
