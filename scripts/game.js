@@ -133,6 +133,7 @@ class Game {
                 }
             })
             if (!this.safe) {
+                this.ctx2.drawImage(this.collisionImg, 0, 0, 100, 100, this.player.x, this.player.y, 50, 50)
                 this.resetGame();
                 this.player.playerCollision = true;
             }
