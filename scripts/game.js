@@ -32,22 +32,22 @@ class Game {
         this.randIndexCars = Math.floor(Math.random() * this.rightCars.length);
         this.playerImg = this.playerImgs[0];
         // Arrays
+        this.arrows = []; 
         this.landArray = [];
         this.waterArray = [];
     }
     assignControlsToKeys() {
-        const self = this;
-        window.addEventListener('keydown', function(e) {
+        window.addEventListener('keydown', (e) => {
             this.arrows = [];
             this.arrows[e.code] = true;
             this.player.update(this.arrows);
-            if (this.arrows['ArrowUp']) self.playerImg = self.playerImgs[0];
-            if (this.arrows['ArrowLeft']) self.playerImg = self.playerImgs[1];
-            if (this.arrows['ArrowDown']) self.playerImg = self.playerImgs[2];
-            if (this.arrows['ArrowRight']) self.playerImg = self.playerImgs[3];
+            if (this.arrows['ArrowUp']) this.playerImg = this.playerImgs[0];
+            if (this.arrows['ArrowLeft']) this.playerImg = this.playerImgs[1];
+            if (this.arrows['ArrowDown']) this.playerImg = this.playerImgs[2];
+            if (this.arrows['ArrowRight']) this.playerImg = this.playerImgs[3];
         })
         
-        window.addEventListener('keyup', function(e) {
+        window.addEventListener('keyup', (e) => {
             delete this.arrows[e.code];
             player.inMotion = false;
         })
