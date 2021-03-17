@@ -13,6 +13,8 @@ class Game {
         this.leftBoats = options.leftBoats,
         //Player
         this.player = options.player;
+        // Food
+        this.food = options.food;
         // Images
         this.jabaliImg = options.jabaliImg;
         this.assasinImg = options.assasinImg;
@@ -20,12 +22,13 @@ class Game {
         this.lifePreserverImg = options.lifePreserverImg;
         this.turtleImg = options.turtleImg;
         this.collisionImg = options.collisionImg;
+        this.donutsImg = options.donutsImg;
         // Print Game Over callback
         this.printGameOver = callback;
         // Global variables
         this.score = 0;
         this.collisionsCount = 0;
-        this.health = 10;
+        this.health = 5;
         this.frame = 0;
         this.gameSpeed = 1;
         this.safe = false;
@@ -151,6 +154,10 @@ class Game {
                     character.y + 1 > object.y + object.height     || // Need to substract or add 1 in order to avoid double collision with boats
                     character.y + character.height - 1 < object.y);
     }
+    foodCollision() {
+        this.health++;
+        this.food.update(this.canvasWidth, this.canvasHeight);
+    }
     resetGame() {
         if (!this.player.playerCollision) {
             this.playerImg = this.playerImgs[0];
@@ -162,6 +169,9 @@ class Game {
     update() {
         this.clean();
         this.player.draw(this.ctx2, this.playerImg);
+        this.food.draw(this.ctx1, this.donutsImg);
+        if (this.frame % 300 === 0) {this.food.update(this.canvasWidth, this.canvasHeight)};
+        if (this.collision(this.player, this.food)) {this.foodCollision()};
         this.handleObstacles();
         if (this.player.y < 0) this.scored();
         this.showScoreBoard();

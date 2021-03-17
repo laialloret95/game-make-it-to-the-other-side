@@ -64,6 +64,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const collisionImg = new Image(); 
     collisionImg.src = '/images/collisions.png';
 
+    const donut1 = new Image(); donut1.src = '/images/donuts/blue_icing.png';
+    const donut2 = new Image(); donut2.src = '/images/donuts/chocolate_icing.png';
+    const donut3 = new Image(); donut3.src = '/images/donuts/pink_icing_sprinkles.png';
+    const donut4 = new Image(); donut4.src = '/images/donuts/dark_red_icing.png';
+    const donut5 = new Image(); donut5.src = '/images/donuts/green_icing_green_sprinkles.png';
+    const donut6 = new Image(); donut6.src = '/images/donuts/orange_icing_chocolate_shaving.png';
+    const donut7 = new Image(); donut7.src = '/images/donuts/white_icing_sprinkles.png';
+
+    const donutsImg = [donut1,donut2,donut3,donut4,donut5,donut6,donut7];
+
     const cell = 60;
   
     function printGameOver() {
@@ -92,7 +102,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 turtleImg: turtleImg,
                 lifePreserverImg: lifePreserverImg,
                 collisionImg : collisionImg,
+                donutsImg: donutsImg,
                 player: player = new Player(ctx2, cell,canvas.width, canvas.height),
+                food: food = new Food(cell,canvas.width, canvas.height),
                 cell: cell,
                 obstacleConstructor: Obstacle,
                 rightCars: rightCars,
@@ -123,7 +135,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 turtleImg: turtleImg,
                 lifePreserverImg: lifePreserverImg,
                 collisionImg : collisionImg,
+                donutsImg: donutsImg,
                 player: player = new Player(ctx2, cell,canvas.width, canvas.height),
+                food: food = new Food (cell,canvas.width, canvas.height),
                 cell: cell,
                 obstacleConstructor: Obstacle,
                 rightCars: rightCars,
