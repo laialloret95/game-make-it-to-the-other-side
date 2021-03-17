@@ -38,18 +38,24 @@ class Game {
     }
     assignControlsToKeys() {
         window.addEventListener('keydown', (e) => {
-            this.arrows = [];
-            this.arrows[e.code] = true;
-            this.player.update(this.arrows);
-            if (this.arrows['ArrowUp']) this.playerImg = this.playerImgs[0];
-            if (this.arrows['ArrowLeft']) this.playerImg = this.playerImgs[1];
-            if (this.arrows['ArrowDown']) this.playerImg = this.playerImgs[2];
-            if (this.arrows['ArrowRight']) this.playerImg = this.playerImgs[3];
+            if (this.player.playerCollision) return;
+            else {
+                this.arrows = [];
+                this.arrows[e.code] = true;
+                this.player.update(this.arrows);
+                if (this.arrows['ArrowUp']) this.playerImg = this.playerImgs[0];
+                if (this.arrows['ArrowLeft']) this.playerImg = this.playerImgs[1];
+                if (this.arrows['ArrowDown']) this.playerImg = this.playerImgs[2];
+                if (this.arrows['ArrowRight']) this.playerImg = this.playerImgs[3];
+            }
         })
         
         window.addEventListener('keyup', (e) => {
-            delete this.arrows[e.code];
-            player.inMotion = false;
+            if (this.player.playerCollision) return;
+            else {
+                delete this.arrows[e.code];
+                player.inMotion = false;
+            }
         })
     }
     initObstacles() {
@@ -110,7 +116,9 @@ class Game {
             if(this.collision(this.player,landObj)) {
                 this.ctx2.drawImage(this.collisionImg, 0, 100, 100, 100, this.player.x, this.player.y, 50, 50)
                 this.resetGame();
+                this.player.playerCollision = true;
             }
+
         });
         this.waterArray.forEach( waterObj => {
             waterObj.updateObstacle(this.gameSpeed, this.canvasWidth);
@@ -126,6 +134,7 @@ class Game {
             })
             if (!this.safe) {
                 this.resetGame();
+                this.player.playerCollision = true;
             }
         }
     }
@@ -142,11 +151,12 @@ class Game {
                     character.y + character.height - 1 < object.y);
     }
     resetGame() {
-        this.playerImg = this.playerImgs[0];
-        this.player.resetPlayer(this.canvasWidth, this.canvasHeight);
-        console.log('reset')
-        this.health--;
-        this.collisionsCount++;
+        if (!this.player.playerCollision) {
+            this.playerImg = this.playerImgs[0];
+            this.player.resetPlayer(this.canvasWidth, this.canvasHeight);
+            this.health--;
+            this.collisionsCount++;
+        }
     }
     update() {
         this.clean();

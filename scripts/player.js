@@ -8,6 +8,7 @@ class Player {
         this.spriteHeight = 533; // height of one frame
         this.width = this.spriteWidth / 8;
         this.height = this.cell;
+        this.playerCollision = false;
         // coordinates when the player first appears
         this.x = this.canvasWidth / 2 - this.width / 2;
         this.y = this.canvasHeight - this.height;
@@ -44,6 +45,7 @@ class Player {
         setTimeout(() => {
             this.x = canvasWidth / 2 - this.width / 2;
             this.y = canvasHeight - this.height;
+            this.playerCollision = false;
         }, 500)
     }
 
