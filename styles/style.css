@@ -11,7 +11,9 @@
 .splash {
     width: 900px;
     height: 900px;
-    background-color: orange;
+    background: url(../images/main-background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -41,10 +43,10 @@ canvas {
 }
 
 button#start{
-    background-color: transparent;
-    border: 2px solid #EB7E67;
+    background-color: rgba(0,0,0, 0.4);
+    border: none;
     border-radius: 0.6em;
-    color: #EB7E67;
+    color: burlywood;
     cursor: pointer;
     display: flex;
     align-self: center;
@@ -58,16 +60,16 @@ button#start{
     text-transform: uppercase;
     font-family: 'Verdana', sans-serif;
     font-weight: 700;
-    top: 75%;
+    top: 70%;
     left: 50%;
     position: absolute;
     transform: translate(-50%,-50%);
   }
   
   button#start:hover,  button#start:focus{
-      color: #fff;
+      color: #5F1C0E;
       outline: 0;
-      box-shadow: 0 0 40px 40px #e74c3c inset;
+      box-shadow: 0 0 40px 40px rgba(215,198,195, 0.5) inset;
       transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
   }
 
@@ -105,7 +107,7 @@ button#play-again{
     top: 80%;
     left: 50%;
     position: absolute;
-    transform: translate(-60%,-50%);
+    transform: translate(-55%,-50%);
   }
   
   button#play-again:hover,  button#play-again:focus{
