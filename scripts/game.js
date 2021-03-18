@@ -6,16 +6,17 @@ class Game {
         this.canvasWidth = options.canvasWidth;
         this.canvasHeight = options.canvasHeight;
         this.cell = options.cell;
-        this.obstacleConstructor = options.obstacleConstructor;
-        this.rightCars = options.rightCars;
-        this.leftCars = options.leftCars;
-        this.rightBoats = options.rightBoats,
-        this.leftBoats = options.leftBoats,
         //Player
         this.player = options.player;
+        // Obstacles
+        this.obstacleConstructor = options.obstacleConstructor;
         // Food
         this.food = options.food;
         // Images
+        this.rightCarsImg = options.rightCarsImg;
+        this.leftCarsImg = options.leftCarsImg;
+        this.rightBoatsImg = options.rightBoatsImg,
+        this.leftBoatsImg = options.leftBoatsImg,
         this.jabaliImg = options.jabaliImg;
         this.assasinImg = options.assasinImg;
         this.playerImgs = options.playerImgs;
@@ -23,7 +24,7 @@ class Game {
         this.turtleImg = options.turtleImg;
         this.collisionImg = options.collisionImg;
         this.donutsImg = options.donutsImg;
-        // Print Game Over callback
+        // Game Over callback
         this.printGameOver = callback;
         // Global variables
         this.score = 0;
@@ -32,7 +33,7 @@ class Game {
         this.frame = 0;
         this.gameSpeed = 1;
         this.safe = false;
-        this.randIndexCars = Math.floor(Math.random() * this.rightCars.length);
+        this.randIndexCars = Math.floor(Math.random() * this.rightCarsImg.length);
         this.playerImg = this.playerImgs[0];
         // Arrays
         this.arrows = []; 
@@ -113,29 +114,30 @@ class Game {
         this.ctx3.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
     }
     handleObstacles() {
+        // Land Obstacles
         this.landArray.forEach(landObj => {
             landObj.updateObstacle(this.gameSpeed, this.canvasWidth);
-            landObj.drawLandObstacles(this.ctx2, this.frame,this.jabaliImg, this.assasinImg,this.leftCars, this.rightCars);
+            landObj.drawLandObstacles(this.ctx2, this.frame,this.jabaliImg, this.assasinImg,this.leftCarsImg, this.rightCarsImg);
             if(this.collision(this.player,landObj)) {
                 this.ctx2.drawImage(this.collisionImg, 0, 100, 100, 100, this.player.x, this.player.y, 50, 50)
                 this.resetGame();
                 this.player.playerCollision = true;
             }
-
         });
+        // Water Objects
         this.waterArray.forEach( waterObj => {
             waterObj.updateObstacle(this.gameSpeed, this.canvasWidth);
-            waterObj.drawWaterObstacles(this.ctx1, this.lifePreserverImg, this.leftBoats, this.rightBoats, this.turtleImg);
+            waterObj.drawWaterObstacles(this.ctx1, this.lifePreserverImg, this.leftBoatsImg, this.rightBoatsImg, this.turtleImg);
         });
-        if(this.player.y >= 300 && this.player.y < 600) {
+        if(this.player.y >= 300 && this.player.y < 600) { // If player is inside water area
             this.safe = false;
             this.waterArray.forEach(waterObj => {
-                if (this.waterCollision(this.player, waterObj)) {
+                if (this.waterCollision(this.player, waterObj)) { // If she's colliding with water boat, 1) safe and  2)should move in the oject direction
                     this.player.x += waterObj.speed;
                     this.safe = true;
                 }
             })
-            if (!this.safe) {
+            if (!this.safe) { // If the player is in water area without colliding with boat she drowns
                 this.ctx2.drawImage(this.collisionImg, 0, 0, 100, 100, this.player.x, this.player.y, 50, 50)
                 this.resetGame();
                 this.player.playerCollision = true;

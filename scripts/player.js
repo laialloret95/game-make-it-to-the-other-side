@@ -12,11 +12,8 @@ class Player {
         // coordinates when the player first appears
         this.x = this.canvasWidth / 2 - this.width / 2;
         this.y = this.canvasHeight - this.height;
-        // prevent player from moving without stop when clicking once on arrow key
+        // prevent player from moving continuously when maintaining finger on a key
         this.inMotion = false;
-        // animate player if we have spritesheet
-        this.frameX = 0;
-        this.frameY = 0;
     }
     draw(ctx2,img) {
         // this.context.fillStyle = 'black';
@@ -48,6 +45,4 @@ class Player {
             this.playerCollision = false;
         }, 500)
     }
-
-
 }

@@ -23,43 +23,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Images
     const jabaliImg = new Image(); 
-    jabaliImg.src = '/images/porc-senglar.png'
+    jabaliImg.src = '/images/obstacles/porc-senglar.png'
 
     const assasinImg = new Image(); 
-    assasinImg.src = '/images/rockman.png'
+    assasinImg.src = '/images/obstacles/rockman.png'
 
     const lifePreserverImg = new Image(); 
-    lifePreserverImg.src = '/images/life-preserver.png'
+    lifePreserverImg.src = '/images/obstacles/life-preserver.png'
 
     const turtleImg = new Image(); 
-    turtleImg.src = '/images/turtle.png'
+    turtleImg.src = '/images/obstacles/turtle.png'
 
-    const playerUpImg = new Image(); playerUpImg.src = '/images/women-phone-up.png';
-    const playerLeftImg = new Image(); playerLeftImg.src = '/images/women-phone-left.png';
-    const playerRightImg = new Image(); playerRightImg.src = '/images/women-phone-right.png';
-    const playerDownImg = new Image(); playerDownImg.src = '/images/women-phone-down.png';
+    const playerUpImg = new Image(); playerUpImg.src = '/images/character/women-phone-up.png';
+    const playerLeftImg = new Image(); playerLeftImg.src = '/images/character/women-phone-left.png';
+    const playerRightImg = new Image(); playerRightImg.src = '/images/character/women-phone-right.png';
+    const playerDownImg = new Image(); playerDownImg.src = '/images/character/women-phone-down.png';
 
     const playerImgs = [playerUpImg,playerLeftImg,playerDownImg,playerRightImg];
 
-    const car1 = new Image(); car1.src = '/images/cars/audi-right.png';
-    const car2 = new Image(); car2.src = '/images/cars/Black_viper-right.png';
-    const car3 = new Image(); car3.src = '/images/cars/Car-right.png';
-    const car4 = new Image(); car4.src = '/images/cars/Mini_truck-left.png';
-    const car5 = new Image(); car5.src = '/images/cars/Mini_van-left.png';
-    const car6 = new Image(); car6.src = '/images/cars/Police-left.png';
+    const car1 = new Image(); car1.src = '/images/obstacles/cars/audi-right.png';
+    const car2 = new Image(); car2.src = '/images/obstacles/cars/Black_viper-right.png';
+    const car3 = new Image(); car3.src = '/images/obstacles/cars/Car-right.png';
+    const car4 = new Image(); car4.src = '/images/obstacles/cars/Mini_truck-left.png';
+    const car5 = new Image(); car5.src = '/images/obstacles/cars/Mini_van-left.png';
+    const car6 = new Image(); car6.src = '/images/obstacles/cars/Police-left.png';
 
-    const rightCars = [car1,car2,car3];
-    const leftCars = [car4,car5,car6];
+    const rightCarsImg = [car1,car2,car3];
+    const leftCarsImg = [car4,car5,car6];
 
-    const boat1 = new Image(); boat1.src = '/images/boats/inflable-yellow-right.png';
-    const boat2 = new Image(); boat2.src = '/images/boats/inflatable-boat-right.png';
-    const boat3 = new Image(); boat3.src = '/images/boats/inflable-right.png';
-    const boat4 = new Image(); boat4.src = '/images/boats/inflable-left.png';
-    const boat5 = new Image(); boat5.src = '/images/boats/inflable-yellow-left.png';
-    const boat6 = new Image(); boat6.src = '/images/boats/inflatable-boat-left.png';
+    const boat1 = new Image(); boat1.src = '/images/obstacles/boats/inflable-yellow-right.png';
+    const boat2 = new Image(); boat2.src = '/images/obstacles/boats/inflatable-boat-right.png';
+    const boat3 = new Image(); boat3.src = '/images/obstacles/boats/inflable-right.png';
+    const boat4 = new Image(); boat4.src = '/images/obstacles/boats/inflable-left.png';
+    const boat5 = new Image(); boat5.src = '/images/obstacles/boats/inflable-yellow-left.png';
+    const boat6 = new Image(); boat6.src = '/images/obstacles/boats/inflatable-boat-left.png';
 
-    const rightBoats = [boat1,boat2,boat3];
-    const leftBoats = [boat4,boat5,boat6];
+    const rightBoatsImg = [boat1,boat2,boat3];
+    const leftBoatsImg = [boat4,boat5,boat6];
 
     const collisionImg = new Image(); 
     collisionImg.src = '/images/collisions.png';
@@ -107,10 +107,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 food: food = new Food(cell,canvas.width, canvas.height),
                 cell: cell,
                 obstacleConstructor: Obstacle,
-                rightCars: rightCars,
-                leftCars: leftCars,
-                rightBoats: rightBoats,
-                leftBoats: leftBoats,
+                rightCarsImg: rightCarsImg,
+                leftCarsImg: leftCarsImg,
+                rightBoatsImg: rightBoatsImg,
+                leftBoatsImg: leftBoatsImg,
             },
             printGameOver
         );
@@ -140,10 +140,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 food: food = new Food (cell,canvas.width, canvas.height),
                 cell: cell,
                 obstacleConstructor: Obstacle,
-                rightCars: rightCars,
-                leftCars: leftCars,
-                rightBoats: rightBoats,
-                leftBoats: leftBoats,
+                rightCarsImg: rightCarsImg,
+                leftCarsImg: leftCarsImg,
+                rightBoatsImg: rightBoatsImg,
+                leftBoatsImg: leftBoatsImg,
             },
             printGameOver
         );
