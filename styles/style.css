@@ -18,7 +18,7 @@ body {
 .splash {
     width: 900px;
     height: 900px;
-    background: url(../images/main-background.png);
+    background: url(../images/backgrounds/main-background.png);
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
@@ -35,7 +35,7 @@ body {
 }
 
 #how-to-play-screen {
-    background: url(../images/how-to-play-background.png);
+    background: url(../images/backgrounds/how-to-play-background.png);
     background-repeat: no-repeat;
     background-size: cover;
     padding-left: 40px;
@@ -55,8 +55,15 @@ body {
     font-weight: bold;
 }
 
+#how-to-play-screen img{
+    position:absolute;
+    top: 0;
+    right: 0;
+    opacity: 0.8;
+}
+
 #game.container {
-    background: url(../images/background_1.png);
+    background: url(../images/backgrounds/background_1.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: left bottom;
