@@ -74,6 +74,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const donutsImg = [donut1,donut2,donut3,donut4,donut5,donut6,donut7];
 
+    // Sounds
+    const crashSound = document.createElement('audio');
+    crashSound.src = '/sounds/crash.ogg';
+
+    const waterSplashSound = document.createElement('audio');
+    waterSplashSound.src = '/sounds/water-splash.wav';
+
     const cell = 60;
   
     function printGameOver() {
@@ -103,6 +110,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 lifePreserverImg: lifePreserverImg,
                 collisionImg : collisionImg,
                 donutsImg: donutsImg,
+                crashSound: crashSound,
+                waterSplashSound: waterSplashSound,
                 player: player = new Player(ctx2, cell,canvas.width, canvas.height),
                 food: food = new Food(cell,canvas.width, canvas.height),
                 cell: cell,
@@ -136,6 +145,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 lifePreserverImg: lifePreserverImg,
                 collisionImg : collisionImg,
                 donutsImg: donutsImg,
+                crashSound: crashSound,
+                waterSplashSound: waterSplashSound,
                 player: player = new Player(ctx2, cell,canvas.width, canvas.height),
                 food: food = new Food (cell,canvas.width, canvas.height),
                 cell: cell,

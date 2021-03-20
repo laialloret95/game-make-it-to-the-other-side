@@ -24,6 +24,9 @@ class Game {
         this.turtleImg = options.turtleImg;
         this.collisionImg = options.collisionImg;
         this.donutsImg = options.donutsImg;
+        // Sounds
+        this.crashSound =  options.crashSound,
+        this.waterSplashSound = options.waterSplashSound,
         // Game Over callback
         this.printGameOver = callback;
         // Global variables
@@ -119,7 +122,8 @@ class Game {
             landObj.updateObstacle(this.gameSpeed, this.canvasWidth);
             landObj.drawLandObstacles(this.ctx2, this.frame,this.jabaliImg, this.assasinImg,this.leftCarsImg, this.rightCarsImg);
             if(this.collision(this.player,landObj)) {
-                this.ctx2.drawImage(this.collisionImg, 0, 100, 100, 100, this.player.x, this.player.y, 50, 50)
+                this.ctx2.drawImage(this.collisionImg, 0, 100, 100, 100, this.player.x, this.player.y, 50, 50);
+                this.crashSound.play();
                 this.resetGame();
                 this.player.playerCollision = true;
             }
@@ -138,7 +142,8 @@ class Game {
                 }
             })
             if (!this.safe) { // If the player is in water area without colliding with boat she drowns
-                this.ctx2.drawImage(this.collisionImg, 0, 0, 100, 100, this.player.x, this.player.y, 50, 50)
+                this.ctx2.drawImage(this.collisionImg, 0, 0, 100, 100, this.player.x, this.player.y, 50, 50);
+                this.waterSplashSound.play();
                 this.resetGame();
                 this.player.playerCollision = true;
             }
