@@ -9,20 +9,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const howToPlayStartBtn = document.getElementById('how-to-play-start');
 
     // Canvas Layers
-    const canvas = document.getElementById('canvas1');
-    const ctx1 = canvas.getContext('2d');
-    canvas.width = 900;
-    canvas.height = 900;
+    const waterLayer = document.getElementById('canvas1');
+    const ctx1 = waterLayer.getContext('2d');
+    waterLayer.width = 900;
+    waterLayer.height = 900;
     
-    const canvas2 = document.getElementById('canvas2');
-    const ctx2 = canvas2.getContext('2d');
-    canvas2.width = 900;
-    canvas2.height = 900;
+    const landLayer = document.getElementById('canvas2');
+    const ctx2 = landLayer.getContext('2d');
+    landLayer.width = 900;
+    landLayer.height = 900;
     
-    const canvas3 = document.getElementById('canvas3');
-    const ctx3 = canvas3.getContext('2d');
-    canvas3.width = 900;
-    canvas3.height = 900;
+    const scoreBoardLayer = document.getElementById('canvas3');
+    const ctx3 = scoreBoardLayer.getContext('2d');
+    scoreBoardLayer.width = 900;
+    scoreBoardLayer.height = 900;
 
     // Images
     const jabaliImg = new Image(); 
@@ -107,8 +107,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx1: ctx1,
                 ctx2: ctx2,
                 ctx3: ctx2,
-                canvasWidth: canvas.width,
-                canvasHeight: canvas.height,
+                canvasWidth: waterLayer.width,
+                canvasHeight: waterLayer.height,
                 jabaliImg: jabaliImg,
                 playerImgs: playerImgs,
                 assasinImg: assasinImg,
@@ -119,8 +119,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 crashSound: crashSound,
                 crunchSound: crunchSound,
                 waterSplashSound: waterSplashSound,
-                player: player = new Player(ctx2, cell,canvas.width, canvas.height),
-                food: food = new Food(cell,canvas.width, canvas.height),
+                player: player = new Player(ctx2, cell,waterLayer.width, waterLayer.height),
+                food: food = new Food(cell,waterLayer.width, waterLayer.height),
                 cell: cell,
                 obstacleConstructor: Obstacle,
                 rightCarsImg: rightCarsImg,
@@ -149,8 +149,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx1: ctx1,
                 ctx2: ctx2,
                 ctx3: ctx2,
-                canvasWidth: canvas.width,
-                canvasHeight: canvas.height,
+                canvasWidth: waterLayer.width,
+                canvasHeight: waterLayer.height,
                 jabaliImg: jabaliImg,
                 playerImgs: playerImgs,
                 assasinImg: assasinImg,
@@ -161,8 +161,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 crashSound: crashSound,
                 crunchSound: crunchSound,
                 waterSplashSound: waterSplashSound,
-                player: player = new Player(ctx2, cell,canvas.width, canvas.height),
-                food: food = new Food(cell,canvas.width, canvas.height),
+                player: player = new Player(ctx2, cell,waterLayer.width, waterLayer.height),
+                food: food = new Food(cell,waterLayer.width, waterLayer.height),
                 cell: cell,
                 obstacleConstructor: Obstacle,
                 rightCarsImg: rightCarsImg,
@@ -185,8 +185,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx1: ctx1,
                 ctx2: ctx2,
                 ctx3: ctx2,
-                canvasWidth: canvas.width,
-                canvasHeight: canvas.height,
+                canvasWidth: waterLayer.width,
+                canvasHeight: waterLayer.height,
                 jabaliImg: jabaliImg,
                 playerImgs: playerImgs,
                 assasinImg: assasinImg,
@@ -197,8 +197,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 crashSound: crashSound,
                 waterSplashSound: waterSplashSound,
                 crunchSound: crunchSound,
-                player: player = new Player(ctx2, cell,canvas.width, canvas.height),
-                food: food = new Food (cell,canvas.width, canvas.height),
+                player: player = new Player(ctx2, cell,waterLayer.width, waterLayer.height),
+                food: food = new Food (cell,waterLayer.width, waterLayer.height),
                 cell: cell,
                 obstacleConstructor: Obstacle,
                 rightCarsImg: rightCarsImg,
