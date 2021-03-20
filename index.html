@@ -11,6 +11,26 @@
 <body>
     <div id="intro" class="container splash show">
         <button id="start">start</button>
+        <button id="how-to-play-btn">how to play</button>
+    </div>
+    <div id="how-to-play-screen" class = "container" style="display: none">
+        <h1>Objective</h1>
+        <p>Help the player <span>get to the other side</span></p>
+        <h1>Rules</h1>
+        <ul>
+            <li>Use the <span>keyboard arrows</span> to move the player</li>
+            <li><span>Avoid being hit</span> by cars on the road or dodged by enemies at the desert</li>
+            <li>To cross the river, <span>jump on the water objects</span></li>
+            <li>Eat <span>donuts</span> to <span>increase</span> your <span>health</span> score</li>
+        </ul>
+        <h1>Score Board</h1>
+        <ul>
+            <li>Your <span>health level</span> starts at 6, each time you are hit by a car, fall into the water or get knocked down by a desert enemy you lose 1 life </li>
+            <li>Once you get the player safe to the other side, you <span>score</span> increases by one</li>
+            <li>The <span>speed</span> of the game increments as long as you move to the next level</li>
+            <li><span>Collisions</span> account for all knock downs and drownings</li>
+        </ul>
+        <button id="how-to-play-start">Start</button>
     </div>
     <div id="game" class="container hide">
         <canvas id="canvas1"></canvas>

@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const gamePage = document.getElementById('game');
     const gameOverPage = document.getElementById('gameover');
     const playAgainButton = document.getElementById('play-again');
+    const howToPlayButton = document.getElementById('how-to-play-btn');
+    const howToPlayScreen = document.getElementById('how-to-play-screen');
+    const howToPlayStartBtn = document.getElementById('how-to-play-start');
 
     // Canvas Layers
     const canvas = document.getElementById('canvas1');
@@ -91,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
         gamePage.classList.add('hide');
         gameOverPage.style = 'display: block';
     }
-    
+
     startButton.addEventListener('click', () => {
         startPage.classList.remove('show');
         startPage.classList.add('hide');
@@ -129,6 +132,48 @@ document.addEventListener('DOMContentLoaded', () => {
         );
         mainGame.start();
     });
+
+    howToPlayButton.addEventListener('click', () => {
+        startPage.classList.remove('show');
+        startPage.classList.add('hide');
+        howToPlayScreen.style = 'display: block';
+    });
+
+    howToPlayStartBtn.addEventListener('click', () => {
+        howToPlayScreen.style = 'display: none';
+        gamePage.classList.remove('hide');
+        gamePage.classList.add('show');
+
+        const mainGame = new Game(
+            {
+                ctx1: ctx1,
+                ctx2: ctx2,
+                ctx3: ctx2,
+                canvasWidth: canvas.width,
+                canvasHeight: canvas.height,
+                jabaliImg: jabaliImg,
+                playerImgs: playerImgs,
+                assasinImg: assasinImg,
+                turtleImg: turtleImg,
+                lifePreserverImg: lifePreserverImg,
+                collisionImg : collisionImg,
+                donutsImg: donutsImg,
+                crashSound: crashSound,
+                crunchSound: crunchSound,
+                waterSplashSound: waterSplashSound,
+                player: player = new Player(ctx2, cell,canvas.width, canvas.height),
+                food: food = new Food(cell,canvas.width, canvas.height),
+                cell: cell,
+                obstacleConstructor: Obstacle,
+                rightCarsImg: rightCarsImg,
+                leftCarsImg: leftCarsImg,
+                rightBoatsImg: rightBoatsImg,
+                leftBoatsImg: leftBoatsImg,
+            },
+            printGameOver
+        );
+        mainGame.start();
+    })
 
     playAgainButton.addEventListener('click', () => {
         gameOverPage.style = 'display: none';

@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Lobster&family=Montserrat:wght@300;400;700&family=Patua+One&family=Rubik:wght@300&family=Sniglet&display=swap');
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 35px;
+}
+
 .container {
     border: 5px solid black;
     top: 50%;
@@ -27,6 +34,27 @@
     visibility: hidden;
 }
 
+#how-to-play-screen {
+    background: url(../images/how-to-play-background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-left: 40px;
+    padding-top: 40px;
+}
+
+#how-to-play-screen h1 {
+    font-size: 25px;
+}
+
+#how-to-play-screen p, li {
+    font-size: 18px;
+}
+
+#how-to-play-screen span {
+    color: #EB7E67;
+    font-weight: bold;
+}
+
 #game.container {
     background: url(../images/background_1.png);
     background-repeat: no-repeat;
@@ -42,14 +70,12 @@ canvas {
     height: 100%;
 }
 
-button#start{
+button#start, #how-to-play-btn{
     background-color: rgba(0,0,0, 0.4);
     border: none;
     border-radius: 0.6em;
     color: burlywood;
     cursor: pointer;
-    display: flex;
-    align-self: center;
     font-size: 1.3rem;
     font-weight: 400;
     line-height: 1;
@@ -60,13 +86,23 @@ button#start{
     text-transform: uppercase;
     font-family: 'Verdana', sans-serif;
     font-weight: 700;
-    top: 70%;
-    left: 50%;
     position: absolute;
     transform: translate(-50%,-50%);
+    width: 300px;
+  }
+
+  button#start {
+    top: 70%;
+    left: 50%;
+    text-align: center;
   }
   
-  button#start:hover,  button#start:focus{
+  button#how-to-play-btn {
+    top: 80%;
+    left: 50%;
+  }
+
+  button#start:hover,#how-to-play-btn:hover,  button#start:focus, #how-to-play-btn:focus{
       color: #5F1C0E;
       outline: 0;
       box-shadow: 0 0 40px 40px rgba(215,198,195, 0.5) inset;
@@ -86,8 +122,8 @@ button#start{
     align-items: flex-end;
 }
 
-button#play-again{
-    background-color: transparent;
+button#play-again, #how-to-play-start{
+    background-color: white;
     border: 3px solid #EB7E67;
     border-radius: 0.6em;
     color: #EB7E67;
@@ -110,7 +146,7 @@ button#play-again{
     transform: translate(-55%,-50%);
   }
   
-  button#play-again:hover,  button#play-again:focus{
+  button#play-again:hover,  #how-to-play-start:hover,  button#play-again:focus,  #how-to-play-start:focus{
       color: #fff;
       outline: 0;
       box-shadow: 0 0 40px 40px #EB7E67 inset;
