@@ -27,6 +27,7 @@ class Game {
         // Sounds
         this.crashSound =  options.crashSound,
         this.waterSplashSound = options.waterSplashSound,
+        this.crunchSound = options.crunchSound,
         // Game Over callback
         this.printGameOver = callback;
         // Global variables
@@ -163,6 +164,7 @@ class Game {
     }
     foodCollision() {
         this.health++;
+        this.crunchSound.play();
         this.food.update(this.canvasWidth, this.canvasHeight);
     }
     resetGame() {
