@@ -43,6 +43,7 @@ class Player {
             this.x = canvasWidth / 2 - this.width / 2;
             this.y = canvasHeight - this.height;
             this.playerCollision = false;
+            this.inMotion = false;
         }, 500)
     }
 }
