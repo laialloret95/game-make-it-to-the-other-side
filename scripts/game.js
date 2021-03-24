@@ -183,7 +183,7 @@ class Game {
         if (this.frame % 300 === 0) {this.food.update(this.canvasWidth, this.canvasHeight)};
         if (this.collision(this.player, this.food)) {this.foodCollision()};
         this.handleObstacles();
-        if (this.player.y < 0) this.scored();
+        if (this.player.y < 50) this.scored();
         this.showScoreBoard();
         this.frame++;
         if (this.health <= 0){
@@ -193,20 +193,23 @@ class Game {
         
     }
     scored() {
-        this.successSound.play();
-        this.score++;
-        this.gameSpeed += 0.05;
-        this.player.x = this.canvasWidth / 2 - this.player.width / 2;
-        this.player.y = this.canvasHeight - this.player.height;
+        if (!this.player.playerCollision) {
+            this.successSound.play();
+            this.score++;
+            this.gameSpeed += 0.05;
+            this.player.resetPlayer(this.canvasWidth, this.canvasHeight);
+            this.player.playerCollision = true;
+        }
+        
     }
     showScoreBoard() {
         this.ctx3.fillStyle = 'white';
         this.ctx3.strokeStyle = 'white'
         this.ctx3.font = '22px Verdana';
-        this.ctx3.fillText(`Score: ${this.score}`, 20,30);
-        this.ctx3.fillText(`Health: ${this.health}`, 20,60);
-        this.ctx3.fillText(`Collisions: ${this.collisionsCount}`, 720,30);
-        this.ctx3.fillText(`Game Speed: ${this.gameSpeed.toFixed(2)}`, 650,60);
+        this.ctx3.fillText(`Score: ${this.score}`, 20,60);
+        this.ctx3.fillText(`Health: ${this.health}`, 20,90);
+        this.ctx3.fillText(`Collisions: ${this.collisionsCount}`, 720,60);
+        this.ctx3.fillText(`Game Speed: ${this.gameSpeed.toFixed(2)}`, 650,90);
     }
     start() {
         this.assignControlsToKeys();
