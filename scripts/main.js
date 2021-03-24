@@ -87,6 +87,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const crunchSound = document.createElement('audio');
     crunchSound.src = 'sounds/crunch.ogg';
 
+    const successSound = document.createElement('audio');
+    successSound.src = 'sounds/completetask.mp3';
+
     const cell = 60;
   
     function printGameOver() {
@@ -119,6 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 crashSound: crashSound,
                 crunchSound: crunchSound,
                 waterSplashSound: waterSplashSound,
+                successSound: successSound,
                 player: player = new Player(ctx2, cell,waterLayer.width, waterLayer.height),
                 food: food = new Food(cell,waterLayer.width, waterLayer.height),
                 cell: cell,
@@ -161,6 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 crashSound: crashSound,
                 crunchSound: crunchSound,
                 waterSplashSound: waterSplashSound,
+                successSound: successSound,
                 player: player = new Player(ctx2, cell,waterLayer.width, waterLayer.height),
                 food: food = new Food(cell,waterLayer.width, waterLayer.height),
                 cell: cell,
@@ -195,10 +200,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 collisionImg : collisionImg,
                 donutsImg: donutsImg,
                 crashSound: crashSound,
-                waterSplashSound: waterSplashSound,
                 crunchSound: crunchSound,
+                waterSplashSound: waterSplashSound,
+                successSound: successSound,
                 player: player = new Player(ctx2, cell,waterLayer.width, waterLayer.height),
-                food: food = new Food (cell,waterLayer.width, waterLayer.height),
+                food: food = new Food(cell,waterLayer.width, waterLayer.height),
                 cell: cell,
                 obstacleConstructor: Obstacle,
                 rightCarsImg: rightCarsImg,

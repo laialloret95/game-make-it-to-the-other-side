@@ -28,6 +28,7 @@ class Game {
         this.crashSound =  options.crashSound,
         this.waterSplashSound = options.waterSplashSound,
         this.crunchSound = options.crunchSound,
+        this.successSound = options.successSound,
         // Game Over callback
         this.printGameOver = callback;
         // Global variables
@@ -192,6 +193,7 @@ class Game {
         
     }
     scored() {
+        this.successSound.play();
         this.score++;
         this.gameSpeed += 0.05;
         this.player.x = this.canvasWidth / 2 - this.player.width / 2;
