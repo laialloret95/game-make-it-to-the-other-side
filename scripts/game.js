@@ -138,7 +138,7 @@ class Game {
             this.safe = false;
             this.waterArray.forEach(waterObj => {
                 if (this.waterCollision(this.player, waterObj)) { // If she's colliding with water boat, 1) safe and  2)should move in the oject direction
-                    this.player.x += waterObj.speed;
+                    this.player.x += waterObj.speed * this.gameSpeed;
                     this.safe = true;
                 }
             })
